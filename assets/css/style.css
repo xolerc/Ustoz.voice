@@ -1,0 +1,111 @@
+
+
+/* === index.html dan ajratildi (XOLERIC SEO) === */
+:root {
+    --bg-dark: #0f0c29;
+    --gradient: linear-gradient(135deg, #24243e, #302b63, #0f0c29);
+    --neon-blue: #00d2ff;
+    --neon-pink: #ff007f;
+    --neon-green: #39ff14;
+    --glass: rgba(255, 255, 255, 0.1);
+    --text: #e0e0e0;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; font-family:'Fredoka', sans-serif; }
+body {
+    background: var(--gradient);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    overflow-x: hidden;
+}
+
+/* Overlay Kirish */
+#overlay {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: var(--bg-dark);
+    display:flex; justify-content:center; align-items:center; flex-direction:column;
+    z-index:1000; transition:0.5s; text-align:center;
+}
+
+.start-btn {
+    padding:20px 50px; font-size:2rem;
+    background: var(--neon-pink); color:white; border:none; border-radius:50px;
+    cursor:pointer; box-shadow:0 0 25px var(--neon-pink);
+    animation: pulse 2s infinite;
+}
+
+/* Header */
+header {
+    width:90%; max-width:1000px; padding:20px;
+    display:flex; justify-content:space-between; align-items:center; margin-top:10px;
+}
+.score-board {
+    background: var(--glass); padding:10px 25px; border-radius:20px;
+    border:1px solid var(--neon-blue); box-shadow:0 0 15px rgba(0,210,255,0.3);
+    font-size:1.5rem;
+}
+
+/* Topic scroller */
+.topic-scroller {
+    width:90%; max-width:1000px; display:flex; gap:15px; overflow-x:auto;
+    padding:10px; margin-bottom:20px;
+}
+.topic-card {
+    flex:0 0 auto; background:var(--glass); padding:10px 20px; border-radius:15px;
+    cursor:pointer; border:1px solid transparent; transition:0.3s;
+}
+.topic-card:hover, .topic-card.active {
+    border-color: var(--neon-pink);
+    background: rgba(255,0,127,0.1);
+}
+
+/* Game container */
+.game-container {
+    flex:1; width:90%; max-width:900px; background: var(--glass);
+    backdrop-filter: blur(15px); border-radius:40px; margin:20px 0;
+    padding:40px; border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 20px 50px rgba(0,0,0,0.5); display:flex; flex-direction:column;
+    align-items:center; position:relative;
+}
+.word-display {
+    font-size:3rem; font-weight:700; text-align:center;
+    min-height:200px; display:flex; flex-wrap:wrap; justify-content:center;
+    gap:15px; align-content:center;
+}
+.word-node { 
+    display:inline-block; padding:10px 20px; border-radius:15px;
+    transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+    opacity:0.3; color:#fff; cursor:default;
+}
+.word-node.active {
+    opacity:1; transform:scale(1.2); color:var(--neon-blue);
+    text-shadow:0 0 15px var(--neon-blue); background: rgba(0,210,255,0.1);
+}
+.word-node.done {
+    opacity:1; color:var(--neon-green); text-shadow:0 0 10px var(--neon-green);
+    transform:scale(0.9);
+}
+
+/* Mic Section */
+.mic-section { display:flex; flex-direction:column; align-items:center; gap:15px; margin-top:30px; }
+.mic-orbit {
+    width:80px; height:80px; border-radius:50%; background:var(--glass);
+    display:flex; justify-content:center; align-items:center; position:relative; font-size:2rem;
+}
+.mic-orbit.listening::before {
+    content:''; position:absolute; width:100%; height:100%; border-radius:50%;
+    border:4px solid var(--neon-pink); animation:ripple 1.5s linear infinite;
+}
+.status-msg { font-size:1.1rem; letter-spacing:1px; color:#aaa; }
+
+/* Animations */
+@keyframes ripple {0%{transform:scale(1);opacity:1;}100%{transform:scale(1.8);opacity:0;}}
+@keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+::-webkit-scrollbar { height:6px; } ::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius:10px; }
+
+/* Responsive */
+@media(max-width:600px){
+    .word-display { font-size:2rem; }
+    .start-btn { padding:15px 35px; font-size:1.5rem; }
+}

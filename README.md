@@ -26,3 +26,6 @@ python3 -m http.server 8080
 ```
 
 **Note:** Voice recognition requires a browser that supports the Web Speech API (Chrome/Edge recommended). The page must be served over HTTPS or `localhost`.
+
+## 🔗 Rasmiy portfolio
+Barcha XOLERIC loyihalari: **https://xolerc.github.io/mydrime/**
